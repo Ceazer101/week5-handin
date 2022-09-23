@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise 1</title>
+</head>
+<body>
+
+<div id="a" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="b" style="width: 100px;margin: 1px;">&nbsp;</div>
+<div id="c" style="width: 100px;margin: 1px;">&nbsp;</div>
+
+<button id="btn">Change Colour</button>
+
+<script>
+
+    const divs = document.querySelectorAll("div")
+
+    for (let i = 0; i < divs.length; i++) {
+        divs[i].style.backgroundColor = "blue"
+    }
+
+    document.getElementById("btn").onclick = () =>{
+        divs[0].style.backgroundColor = "red"
+        divs[1].style.backgroundColor = "green"
+        divs[2].style.backgroundColor = "orange"
+    }
+
+</script>
+
+</body>
+</html>
