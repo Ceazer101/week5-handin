@@ -13,6 +13,10 @@
     </thead>
     <tbody id="tbody"></tbody>
 </table>
+<div><label for="input">Price</label><input id="input">
+    <button id="filter-btn">Price less than</button>
+    <button id="clear-btn">Clear filter</button>
+</div>
 <script>
     const cars = [
         { id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000 },
@@ -21,6 +25,7 @@
         { id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799 },
         { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
     ];
+    function makeTableRows(cars){
     const tableRows = cars.map(car => `
         <tr>
         <td>${car.id}</td>
@@ -29,9 +34,21 @@
         <td>${car.model}</td>
         <td>${car.price}</td>
         </tr>
-    `)
-    const rowsAsString = tableRows.join("")
-    document.getElementById("tbody").innerHTML = rowsAsString
+    `).join("\n")
+    document.getElementById("tbody").innerHTML=tableRows
+    }
+    makeTableRows(cars)
+
+    document.getElementById("filter-btn").onclick = () => {
+        const price = document.getElementById("input").value
+        const filteredCars = cars.filter(car => car.price <= price)
+        makeTableRows(filteredCars)
+    }
+
+    document.getElementById("clear-btn").onclick = () => {
+        makeTableRows(cars)
+    }
 </script>
 </body>
+
 </html>

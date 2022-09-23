@@ -5,22 +5,47 @@
     <title>Exercise 3</title>
 </head>
 <body>
-
+<h2>Exercise 3</h2>
+<ul id="my-ul"></ul>
 </body>
 
 <div>
     <form>
         <div>
             <input id="name-input" placeholder="Enter new name here">
-            <button id="btn-a1">Add Name</button>
-            <button id="btn-a2">Remove First</button>
-            <button id="btn-a3">Remove Last</button>
+            <button id="btn-add">Add Name</button>
+            <button id="btn-1remove">Remove First</button>
+            <button id="btn-2remove">Remove Last</button>
         </div>
     </form>
 </div>
 
 <script>
     const names =["Güler", "Maja", "Kenneth", "Christopher", "Ib"]
+
+    function createListItems(){
+        document.getElementById("my-ul").innerHTML = names.map(name => `<li>${name}</li>`).join("")
+    }
+    createListItems()
+
+    document.getElementById("btn-add").onclick = (evt) => {
+        evt.preventDefault()
+        const newName = document.getElementById("name-input").value
+        names.push(newName)
+        createListItems()
+    }
+
+    document.getElementById("btn-1remove").onclick = (evt) => {
+        evt.preventDefault()
+        names.shift()
+        createListItems()
+    }
+
+    document.getElementById("btn-2remove").onclick = (evt) => {
+        evt.preventDefault()
+        names.pop()
+        createListItems()
+    }
 
 </script>
 </html>
